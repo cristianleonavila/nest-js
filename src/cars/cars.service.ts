@@ -7,23 +7,7 @@ import { CreateCarDTO, UpdateCarDTO } from './dto';
 @Injectable()
 export class CarsService {
 
-    private data:Car[] =  [
-        {
-            id: uuid(),
-            brand: 'Toyota',
-            model: 'A'
-        },
-        {
-            id: uuid(),
-            brand: 'Chevrolet',
-            model: 'B'
-        },
-        {
-            id: uuid(),
-            brand: 'Honda',
-            model: 'C'
-        }
-    ]
+    private data:Car[] =  []
 
     findAll() {
         return this.data;
@@ -66,6 +50,10 @@ export class CarsService {
         let carToDelete = this.findById(id);
         let newData = this.data.filter(car => car.id !== carToDelete.id);
         this.data = newData;
+    }
+
+    loadData(cars: Car[]) {
+        this.data = cars;
     }
 
 }

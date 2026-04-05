@@ -7,13 +7,7 @@ import { v4 as uuid } from 'uuid';
 @Injectable()
 export class BrandsService {
 
-  private brands: Brand[] = [
-    {
-      id: uuid(),
-      name: 'Toyota',
-      createdAt: new Date().getTime()
-    }
-  ];
+  private brands: Brand[] = [];
 
   create(createBrandDto: CreateBrandDto) {
     const brand: Brand = {
@@ -50,5 +44,9 @@ export class BrandsService {
 
   remove(id: string) {
     this.brands = this.brands.filter(brand => brand.id !== id);
+  }
+
+  loadData(brands: Brand[]) {
+    this.brands = brands;
   }
 }
